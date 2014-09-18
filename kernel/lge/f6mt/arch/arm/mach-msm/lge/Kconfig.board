@@ -1,6 +1,0 @@
-#
-# Include the specific Kconfig file for LGE board
-#
-
-# fx3
-source "arch/arm/mach-msm/lge/fx3/Kconfig"
