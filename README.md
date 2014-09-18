@@ -1,10 +1,7 @@
-lge_f6mt_cm11
+WIP: LG Optimus F3Q
 =============
 
-CM11 Kernel and Device tree for LG Optimus F6
+Kernel and Device tree for LG Optimus F3Q
 
-copy contents to the root of your cm11 folder
+WORK IN PROGRESS!
 
-to build
-
-. build/envsetup.sh && brunch f6mt
