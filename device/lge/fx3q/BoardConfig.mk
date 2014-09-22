@@ -32,11 +32,18 @@ BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PRODUCT=fx3q_tmo_us
 TARGET_KERNEL_SOURCE := kernel/lge/fx3q
 TARGET_KERNEL_CONFIG := fx3q_tmo_us_defconfig
+TARGET_KERNEL_MODULES := setup_fs
 # Use GCC 4.6 to compile the kernel as recommended by LG:
 ARM_EABI_TOOLCHAIN :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
 
-TARGET_NO_INITLOGO := true
-TARGET_KERNEL_MODULES := setup_fs
+#TARGET_NO_INITLOGO := true
+
+## build flags
+#LOCAL_C_INCLUDES += \
+#	$(TOP)/hardware/qcom/display/libqdutils	
+#include $(BUILD_SHARED_LIBRARY) 
+
+#HAVE_SELINUX := false
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 12582912
@@ -63,6 +70,7 @@ TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/lcd/panel/backlight\"
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
+BOARD_HAVE_OLD_ION_API := true
 BOARD_EGL_CFG := device/lge/fx3q/proprietary/lib/egl/egl.cfg
 
 # Audio
@@ -70,6 +78,10 @@ BOARD_EGL_CFG := device/lge/fx3q/proprietary/lib/egl/egl.cfg
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
+# According to http://rootzwiki.com/topic/38114-stevespear-pub-aokp-builds-project-unicorn-butter/page-86#entry1104604
+# if no audio that may fix it:
+#BOARD_HAVE_LOW_LATENCY_AUDIO := true
+
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -100,9 +112,10 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/fx3q/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx3q/bluetooth/libbt_vndcfg.txt
+BT_ALT_STACK := true
 
 # GPS
-BOARD_HAVE_NEW_QC_GPS := true
+#BOARD_HAVE_NEW_QC_GPS := true
 
 # FM
 QCOM_FM_ENABLED := true
@@ -119,7 +132,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_USES_CM_POWERHAL := true
 
 # Charger
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/capacity 
+#BOARD_CHARGING_MODE_BOOTING_LPM := \"/sys/class/power_supply/battery/capacity\"
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_RES := device/lge/fx3q/ramdisk/res/images/charger
@@ -132,8 +146,8 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Releasetools
-TARGET_PROVIDES_RELEASETOOLS := true
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/f6mt/releasetools/ota_from_target_files
+#TARGET_PROVIDES_RELEASETOOLS := true
+#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/f6mt/releasetools/ota_from_target_files
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := LGMD520,fx3q, f3q

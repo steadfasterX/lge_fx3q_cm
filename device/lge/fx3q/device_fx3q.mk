@@ -21,12 +21,43 @@ LOCAL_PATH := device/lge/fx3q
 #    $(LOCAL_KERNEL):kernel
 
 PREBUILT_SHARED_LIBRARY += \
+	vendor/lge/fx3q/proprietary/system/lib/libgenlock.so:obj/lib/libgenlock.so \
+	vendor/lge/fx3q/proprietary/system/lib/libOmxVdec.so:obj/lib/libOmxVdec.so \
+	vendor/lge/fx3q/proprietary/system/lib/libOmxVenc.so:obj/lib/libOmxVenc.so \
+	vendor/lge/fx3q/proprietary/system/lib/libqdutils.so:obj/lib/libqdutils.so \
 	vendor/lge/fx3q/proprietary/system/lib/libtilerenderer.so:obj/lib/libtilerenderer.so \
-	vendor/lge/fx3q/proprietary/system/lib/libandroid_runtime.so:obj/lib/libandroid_runtime.so
+	vendor/lge/fx3q/proprietary/system/lib/libandroid_runtime.so:obj/lib/libandroid_runtime.so \
+	vendor/lge/fx3q/proprietary/system/lib/libmemalloc.so:obj/lib/libmemalloc.so \
+    	vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_ddpdec.so:obj/lib/libstagefright_soft_ddpdec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_dtsdec.so:obj/lib/:obj/lib/libstagefright_soft_dtsdec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefrighthw.so:obj/lib/libstagefrighthw.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_enc_common.so:obj/lib/libstagefright_enc_common.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_mp3dec.so:obj/lib/libstagefright_soft_mp3dec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_avc_common.so:obj/lib/libstagefright_avc_common.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_flacenc.so:obj/lib/libstagefright_soft_flacenc.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_amrwbenc.so:obj/lib/libstagefright_soft_amrwbenc.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_rawdec.so:obj/lib/libstagefright_soft_rawdec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_g711dec.so:obj/lib/libstagefright_soft_g711dec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_amrnb_common.so:obj/lib/libstagefright_amrnb_common.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_h264dec.so:obj/lib/libstagefright_soft_h264dec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_yuv.so:obj/lib/libstagefright_yuv.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_foundation.so:obj/lib/libstagefright_foundation.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_mpeg4dec.so:obj/lib/libstagefright_soft_mpeg4dec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_vpxdec.so:obj/lib/libstagefright_soft_vpxdec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_amrdec.so:obj/lib/libstagefright_soft_amrdec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_amrnbenc.so:obj/lib/libstagefright_soft_amrnbenc.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_aacdec.so:obj/lib/libstagefright_soft_aacdec.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_omx.so:obj/lib/libstagefright_omx.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright.so:obj/lib/libstagefright.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_h264enc.so:obj/lib/libstagefright_soft_h264enc.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_mpeg4enc.so:obj/lib/libstagefright_soft_mpeg4enc.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_aacenc.so:obj/lib/libstagefright_soft_aacenc.so \
+        vendor/lge/fx3q/proprietary/system/lib/libstagefright_soft_vorbisdec.so:obj/lib/libstagefright_soft_vorbisdec.so
+
+#	vendor/lge/fx3q/proprietary/system/lib/liboverlay.so:obj/lib/liboverlay.so \
 
 # Copy proprietary vendor files
 PRODUCT_COPY_FILES += \
-	vendor/lge/fx3q/proprietary/system/lib/libqdutils.so:obj/lib/libqdutils.so \
 	vendor/lge/fx3q/scripts/initrd/init.fx3q.rc:root/init.fx3q.rc \
     	vendor/lge/fx3q/scripts/initrd/init.fx3.rc:root/init.fx3.rc \
     	vendor/lge/fx3q/scripts/initrd/init.lge.rc:root/init.lge.rc \
@@ -78,7 +109,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-PRODUCT_BOOT_JARS += qcmediaplayer
+#PRODUCT_BOOT_JARS += qcmediaplayer
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 800
@@ -87,23 +118,23 @@ TARGET_SCREEN_WIDTH := 480
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
-    gralloc.msm8960 \
-    hwcomposer.msm8960 \
     memtrack.msm8960 \
     power.msm8960 \
-    libgenlock \
     libmemalloc \
-    liboverlay \
     libqdutils
+#    libgenlock \
+    liboverlay \
+#	gralloc.msm8960 \
+#    hwcomposer.msm8960 \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio_policy.msm8960 \
-    audio.primary.msm8960 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler
+#    audio_policy.msm8960 \
+#    audio.primary.msm8960 \
 
 # Media
 PRODUCT_PACKAGES += \
@@ -111,16 +142,17 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore \
     libc2dcolorconvert \
-    libOmxVdecHevc \
-    libstagefrighthw \
-    libOmxVdec \
-    libOmxVenc \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
-    libdashplayer \
-    qcmediaplayer
+    libdashplayer
+
+#    libstagefrighthw \
+#    qcmediaplayer
+#    libOmxVdecHevc \
+#    libOmxVdec \
+#    libOmxVenc \
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -138,11 +170,11 @@ PRODUCT_PACKAGES += \
     sap.conf
 
 # FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
+#PRODUCT_PACKAGES += \
+#    qcom.fmradio \
+#    FM2 \
+#    FMRecord
+#    libqcomfm_jni \
 
 # NFC Support
 PRODUCT_PACKAGES += \
