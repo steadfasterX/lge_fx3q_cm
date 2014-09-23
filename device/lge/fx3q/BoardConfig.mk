@@ -27,14 +27,14 @@ BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 
 # Kernel build options either prebuilt:
-#TARGET_PREBUILT_KERNEL := device/lge/fx3q/kernel
+TARGET_PREBUILT_KERNEL := device/lge/fx3q/kernel
 # ... or as recommended by CM - path to the sources and config:
-TARGET_PRODUCT=fx3q_tmo_us
-TARGET_KERNEL_SOURCE := kernel/lge/fx3q
-TARGET_KERNEL_CONFIG := fx3q_tmo_us_defconfig
-TARGET_KERNEL_MODULES := setup_fs
+#TARGET_PRODUCT=fx3q_tmo_us
+#TARGET_KERNEL_SOURCE := kernel/lge/fx3q
+#TARGET_KERNEL_CONFIG := fx3q_tmo_us_defconfig
+#TARGET_KERNEL_MODULES := setup_fs
 # Use GCC 4.6 to compile the kernel as recommended by LG:
-ARM_EABI_TOOLCHAIN :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
+#ARM_EABI_TOOLCHAIN :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
 
 #TARGET_NO_INITLOGO := true
 
@@ -130,6 +130,9 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # PowerHAL
 TARGET_USES_CM_POWERHAL := true
+
+# Build our own PowerHAL
+#TARGET_POWERHAL_VARIANT :=
 
 # Charger
 #BOARD_CHARGING_MODE_BOOTING_LPM := \"/sys/class/power_supply/battery/capacity\"

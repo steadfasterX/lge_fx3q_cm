@@ -8,17 +8,15 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/lge/fx3q/fx3q-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lge/fx3q/overlay
-
 LOCAL_PATH := device/lge/fx3q
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
-#	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
-#else
-#	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+else
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_KERNEL):kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
 
 PREBUILT_SHARED_LIBRARY += \
 	vendor/lge/fx3q/proprietary/system/lib/libgenlock.so:obj/lib/libgenlock.so \
